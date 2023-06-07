@@ -1,13 +1,8 @@
 //your code here
-let touristSpots = ['The Virupaksha Temple','Victoria Memorial','Tajmahal'];
-
-const orderedSpots = touristSpots.sort((a,b) =>{
-	const regex = /^(?:The|A|An)\s+/i;
-
-	const spotA = a.replace(regex, "");
-	const spotB = b.replace(regex, "");
-
-	return spotA.localCompare(spotB);
-});
-
-console.log(orderedSpots)
+let touristsSopts = ['The Virupaksha Temple', 'Vicoria Memorial', 'Tajmahal'];
+function strip(word){
+	let regex = new RegExp('^(a | an | the'),i)
+	return word.replace(regex, '').trim()
+}
+const sortedBands = touristsSopts.sort((a,b) => (strip(a)>strip(b)) ? 1 : -1)
+document.querySelector('#bands').innerHTML = sortedBands.map(item => `<li>${item}</li>`).join('')
